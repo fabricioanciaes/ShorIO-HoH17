@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="node_modules\bulma\css\bulma.css">
+        <link rel="stylesheet" href="/styles/font-awesome.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="scripts/socket.io.min.js"></script>
+        <script src="scripts/dashboard.js"></script>
+
+        <style>
+            body {
+                background-color: #ecf0f1;
+            }
+            .hero {
+                margin-bottom:15px;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container">
+                <h1 class="title">
+                    Dashboard
+                </h1>
+                <h2 class="subtitle">
+                    Café metagame
+                </h2>
+                </div>
+            </div>
+        </section>
+    <div class="container">
+        
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-parent">
+
+            <section class="tile is-child box content pauta">
+                <h2>Pauta</h2>
+                <hr>
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button behave-radio is-inverted is-danger">
+                        <span class="icon">
+                            <i class="fa fa-circle"></i>
+                        </span>
+                        </a>
+                    </p>
+                    <p class="control is-expanded">
+                        <input class="input value" type="text" placeholder="Assunto">
+                    </p>
+                </div>
+
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button behave-radio is-inverted is-danger">
+                        <span class="icon">
+                            <i class="fa fa-circle"></i>
+                        </span>
+                        </a>
+                    </p>
+                    <p class="control is-expanded">
+                        <input class="input value" type="text" placeholder="Assunto">
+                    </p>
+                </div>
+
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button behave-radio is-inverted is-danger">
+                        <span class="icon">
+                            <i class="fa fa-circle"></i>
+                        </span>
+                        </a>
+                    </p>
+                    <p class="control is-expanded">
+                        <input class="input value" type="text" placeholder="Assunto">
+                    </p>
+                </div> 
+
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button behave-radio is-inverted is-danger">
+                        <span class="icon">
+                            <i class="fa fa-circle"></i>
+                        </span>
+                        </a>
+                    </p>
+                    <p class="control is-expanded">
+                        <input class="input value" type="text" placeholder="Assunto">
+                    </p>
+                </div> 
+                <hr>
+                <div class="field">
+                    <div class="control">
+                        <a class="button is-primary update">
+                        <span class="icon">
+                            <i class="fa fa-refresh"></i>
+                        </span>
+                        <span>Update</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="tile is-vertical is-parent">
+            <div class="tile is-child">
+                <section class="box content casters">
+                    <h2>Casters</h2>
+                    <hr>
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input class="input value" type="text" placeholder="Caster">
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input class="input value" type="text" placeholder="Caster">
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input class="input value" type="text" placeholder="Caster">
+                        </p>
+                    </div> 
+
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input class="input value" type="text" placeholder="Caster">
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input class="input value" type="text" placeholder="Caster">
+                        </p>
+                    </div> 
+
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input class="input value" type="text" placeholder="Caster">
+                        </p>
+                    </div> 
+                    <hr>
+                    <div class="field">
+                        <div class="control">
+                            <a class="button is-primary update">
+                            <span class="icon">
+                                <i class="fa fa-refresh"></i>
+                            </span>
+                            <span>Update</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+      </div>
+
+    </div>
+    </body>
+</html>
