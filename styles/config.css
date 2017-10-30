@@ -1,25 +1,35 @@
 :root {
-    /*Colors*/
-    --primary-color: #55aecc;
-    --success-color: #55ccaa;
-    --danger-color: #c55;
 
-    /*Dashboard Layout*/
-    --dashboard-font: 'Segoe UI';
-    --background-color: #333;
-    --text-color: #ecf0f1;
-    --border-radius: 2px;
-    --padding: 15px;
-    --margin: 15px;
+    /* Base seleciona resolução */
+    /*  Base 1   = 720p
+        Base 1.5 = 1080p  */
+    --base: 1;
 
-    /*Dashboard Panels*/
-    --panel-background: #ecf0f1;
-    --panel-text: #333;
+    /* Score colors */
+    --player-1-score-bg:#d61e1e;
+    --player-1-score-text:#ecf0f1;
+    --player-2-score-bg:#d61e1e;
+    --player-2-score-text:#ecf0f1;
 
-    /*Material Design Shadows*/
-    --shadow-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    --shadow-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    --shadow-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    --shadow-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    --shadow-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    /* Name colors */
+    --player-1-name-bg:white;
+    --player-1-name-text:#121314;
+    --player-2-name-bg:white;
+    --player-2-name-text:#121314;
+
+    --margin: calc(var(--base) * 15px);
+
+    --scoreHeight: calc(var(--margin)/4);
+    --scoreHeight: var(--margin);
+
+    --font-family: Segoe UI;
+    --font-size-player: calc(var(--base) * 16px);
+    --font-size-score: calc(var(--base) * 22px);
+    --font-weight-score: bold;
+
+    --playerHeight: calc(var(--margin)/4);
+    --playerWidth: calc(var(--base) * 320px);
+
+    --outwardMargin: calc(var(--base) * 350px);
+    --spacinTop: calc(var(--base) * 0px);
 }

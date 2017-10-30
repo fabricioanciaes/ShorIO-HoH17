@@ -1,0 +1,207 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/node_modules/materialize-css/dist/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+        <script src="scripts/socket.io.min.js"></script>
+        <script src="scripts/dashboard.js"></script>
+        <script src="scripts/inputs.js"></script>
+
+        <style>
+            .intrinsic-container {
+            position: relative;
+            height: 0;
+            overflow: hidden;
+            }
+            
+            /* 16x9 Aspect Ratio */
+            .intrinsic-container-16x9 {
+            padding-bottom: 56.25%;
+            min-height:600px;
+            }
+            
+            /* 4x3 Aspect Ratio */
+            .intrinsic-container-4x3 {
+            padding-bottom: 75%;
+            }
+            
+            .intrinsic-container iframe {
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            }
+
+            .score {
+                width:50%;
+                margin:0;
+                padding:8px;
+                font-size:64px;
+                float:left;
+                text-align:center;
+                border:1px solid #ddd;
+            }
+
+            .score:first-child {
+                border-right-color: transparent;
+            }
+        </style>
+    </head>
+    <body class="grey lighten-4">
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper grey darken-4">
+                    <span class="brand-logo truncate"><i class="material-icons prefix">dashboard</i> Heaven or Hell</span>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a target="_blank" href="https://smash.gg/tournament/heaven-or-hell-2017/events">Brackets</a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="http://twitch.tv/hitconfirm">Twitch</a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="http://www.twitch.tv/hitconfirm/chat">Chat</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <section class="main">
+            <div class="row ">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Jogadores</span>
+                            <span class="grey-text text-lighten-1"><i class="material-icons tiny">help_outline</i> Este painel controla o que aparece no placar, pode usar as setas do teclado, clicar ou digitar o número pra aumentar/diminuir o placar</span>
+                            <div class="row">
+                                <div class="input-field col m9 s12">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input type="text" id="p1_name" class="autocomplete player">
+                                    <label for="autocomplete-input">Player 1</label>
+                                </div>
+                                <div class="col m3 s12">
+                                    <label>Região P1</label>
+                                    <select id="p1_region" class="browser-default">
+                                        <option value="BRA">Brasil</option>
+                                        <option value="ARG">Argentina</option>
+                                        <option value="ECU">Equador</option>
+                                        <option value="JPN">Japão</option>
+                                        <option value="USA">USA</option>
+                                        <option value="UNK">Desconhecida</option>
+                                        
+                                    </select>
+                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col m9 s12">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input type="text" id="p2_name" class="autocomplete player">
+                                    <label for="autocomplete-input">Player 2</label>
+                                </div>
+                                <div class="col m3 s12">
+                                    <label>Região P2</label>
+                                    <select id="p2_region" class="browser-default">
+                                        <option value="BRA">Brasil</option>
+                                        <option value="ARG">Argentina</option>
+                                        <option value="ECU">Equador</option>
+                                        <option value="JPN">Japão</option>
+                                        <option value="USA">USA</option>
+                                        <option value="UNK">Desconhecida</option>
+                                    </select>
+                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <input id="p1_score" type="number" value="0" class="score browser-default">
+                                    <input id="p2_score" type="number" value="0" class="score browser-default">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col s12">
+                                    <p>
+                                        <input type="checkbox" class="filled-in" id="show_region" checked="checked" />
+                                        <label for="show_region">Mostrar Região no Scoreboard</label>
+                                    </p>
+
+                                    <p>
+                                        <input type="checkbox" class="filled-in" id="freeplay"/>
+                                        <label for="freeplay">Freeplay</label>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <a href="#" onclick="updatePlayers()">Update</a>
+                            <a href="#" onclick="switchPlayers()">Inverter Nomes</a>
+                            <a href="#" onclick="resetScore()">Resetar Score</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Comentaristas</span>
+                            <span class="grey-text text-lighten-1">
+                                <i class="material-icons tiny">help_outline</i> 
+                                Caso só tenha um comentarista, deixe o comentarista 2 vazio
+                            </span>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">headset_mic</i>
+                                    <input type="text" class="validate" id="caster1_name">
+                                    <label for="icon_prefix">Comentarista 1</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">headset_mic</i>
+                                    <input type="text" class="validate" id="caster2_name">
+                                    <label for="icon_prefix">Comentarista 2</label>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="card-action">
+                            <a href="#" onclick="updateCasters()">Update</a>
+                            <a href="#" onclick="switchCasters()">Inverter Nomes</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+            
+            </div>
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="intrinsic-container intrinsic-container-16x9">
+                        <!-- <iframe frameborder="0" scrolling="no" id="chat_embed" src="http://www.twitch.tv/hitconfirm/chat"> -->
+                        </iframe>
+                    </div>
+                </div>
+            
+                <div class="col s12 m6">
+                    <ul class="collection with-header">
+                        <li class="collection-header">
+                            <h5>Links importantes</h5>
+                            <span class="grey-text text-lighten-1">
+                                <i class="material-icons tiny">help_outline</i> Caso queira copiar, use o botão direito > copiar endereço</span>
+                        </li>
+                        <a target="_blank" href="https://smash.gg/tournament/heaven-or-hell-2017/events/ggrev2-1on1/brackets" class="collection-item">GGRev2 1on1</a>
+                        <a target="_blank" href="https://smash.gg/tournament/heaven-or-hell-2017/events/ggrev2-3on3/brackets" class="collection-item">GGRev2 3on3</a>
+                        <a target="_blank" href="https://smash.gg/tournament/heaven-or-hell-2017/events/bbcf-1on1/brackets" class="collection-item">BBCF 1on1</a>
+                        <a target="_blank" href="https://smash.gg/tournament/heaven-or-hell-2017/events/3s-1on1/brackets" class="collection-item">3s 1on1</a>
+                        <a target="_blank" href="https://smash.gg/tournament/heaven-or-hell-2017/events/mbaacc-1on1/brackets" class="collection-item">MBAACC 1on1</a>
+                        <a target="_blank" href="https://smash.gg/tournament/heaven-or-hell-2017/events/dfci-1on1/brackets" class="collection-item">DFCI 1on1</a>
+
+                        
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

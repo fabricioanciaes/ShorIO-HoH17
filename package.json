@@ -1,5 +1,5 @@
 {
-  "name": "ShorIO",
+  "name": "ShorIO-HoH17",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,8 +10,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "bulma": "^0.4.1",
-    "express": "^4.15.2",
-    "socket.io": "^1.7.3"
+    "express": "^4.16.2",
+    "flag-icon-css": "^2.8.0",
+    "jquery": "^3.2.1",
+    "materialize-css": "^0.100.2",
+    "socket.io": "^1.7.4"
+  },
+  "dependencies": {
+    "x-frame-options": "^1.0.0"
   }
 }

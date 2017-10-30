@@ -4,7 +4,7 @@ var io = require('socket.io')(http);
 var express = require('express');
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/dashboard.html');
+  res.sendFile(__dirname + '/dashboard2.html');
 });
 
 app.get('/view', function(req, res){
@@ -16,15 +16,31 @@ app.use("/scripts", express.static(__dirname + '/scripts'));
 app.use("/fonts", express.static(__dirname + '/fonts'));
 app.use("/node_modules", express.static(__dirname + '/node_modules'));
 
-let serverData;
+var serverData = {
+    player: [{
+        'name':'',
+        'region':'UNK',
+        'score':'0',
+    },
+    {
+        'name': '',
+        'region': 'UNK',
+        'score': '0',
+    }],
+    caster: ["",""]
+};
 
 io.on('connection', function(socket){
   console.log('a user connected');
+  io.emit('return serverData', serverData);
+  console.log(serverData);
 
-    socket.on('update pauta', function(data) {
+    
+
+    socket.on('update players', function(data) {
         serverData = data;
-        io.emit('update pauta', serverData);
-        console.log('pauta updated');
+        io.emit('update players', serverData);
+        console.log('players updated');
         console.log(serverData);
     });
 
@@ -38,6 +54,6 @@ io.on('connection', function(socket){
 
 
 
-http.listen(4000, function(){
+http.listen(4000, '0.0.0.0', function(){
   console.log('listening on *:4000');
 });
