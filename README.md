@@ -21,5 +21,5 @@ A lista de páginas é:
     - Tela de espera com o logo do heaven or hell
 - [http://localhost:4000/scoreboard](http://localhost:4000/scoreboard)
     - Placar, inclua por cima do vídeo do jogo
-- [http://localhost:4000/casters] (http://localhost:4000/casters])
+- [http://localhost:4000/casters](http://localhost:4000/casters])
     - Comentaristas, bote por cima da webcam em tela cheia.
