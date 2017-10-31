@@ -64,5 +64,7 @@ io.on('connection', function(socket){
 
 
 http.listen(4000, '0.0.0.0', function(){
-  console.log('listening on *:4000');
+  console.log('Abra seu navegador e entre em: http://localhost:4000');
+  console.log('Lista de views para você incluir no stream via browsersources:');
+  console.log('\n http://localhost:4000/idle \n http://localhost:4000/scoreboard \n http://localhost:4000/casters');
 });
