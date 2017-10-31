@@ -1,0 +1,51 @@
+<html>
+
+<head>
+
+    <script src="scripts/socket.io.min.js"></script>
+    <script src="scripts/scoreboard.js"></script>
+    <link rel="stylesheet" href="styles/caster.css">
+    <script>
+        const socket = io();
+        let fields;
+
+        document.addEventListener('DOMContentLoaded', function () {
+            fields = {
+                body: document.querySelector('body'),
+                caster1: document.querySelector('.caster1'),
+                caster2: document.querySelector('.caster2'),
+            };
+
+            socket.on('update casters', function (data) {
+                console.log("UPDATE RECIEVED");
+                console.log(data);
+
+                if (!fields.body.classList.contains("ready")) {
+                    fields.body.classList.add("ready");
+                }
+
+                updateValue(fields.caster1, data.caster[0]);
+                updateValue(fields.caster2, data.caster[1]);
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <body class="">
+      <div class="container">
+          <div class="lower-third left"> 
+              <span class="caster caster1">Zé Caralho BIG CU DA SILVA AEE KASINÃO</span>
+          </div>
+          <div class="lower-third right">
+              <span class="caster caster2">Zé Caralho BIG CU DA SILVA AEE KASINÃO</span>
+          </div>
+      </div>
+
+      <img src="img/hoh-logo.png" alt="" class="hoh-logo">
+    </body>
+</body>
+
+</html>

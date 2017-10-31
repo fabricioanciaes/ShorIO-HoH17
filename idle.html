@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <style>
+            .hoh-logo {
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-90%,-50%);
+                width:100%;
+                height:auto;
+                max-width:80vh;
+            }
+
+            body {
+                background-image: url('img/hoh-background.jpg');
+                background-repeat:repeat-x;
+                background-position-y: center;
+                animation-name: ticker;
+                animation-duration: 30s;
+                animation-timing-function: linear;
+                background-color:black;
+                animation-iteration-count: infinite;
+            }
+
+            @keyframes ticker {
+                0% {
+                    background-position: 0% center;
+                }
+
+                100% {
+                    background-position: 1920px center;
+                }
+            }
+
+            h1 {
+                position:absolute;
+                top:50%;
+                transform:translateY(-50%);
+                right:10%;
+                color:white;
+                font-family:Segoe ui;
+                font-weight:100;
+                font-size:80px;
+                text-align:center;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="img/hoh-logo-big.png" alt="" class="hoh-logo">
+        <h1>Voltamos já</h1>
+    </body>
+</html>

@@ -166,7 +166,7 @@ body {
   max-width: 15.3125rem;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;}
 
 .top-bar {
   display: table;
@@ -204,7 +204,7 @@ section {
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: #ecf0f1;
+    background-color: #333;
     z-index: -1;
     -webkit-transform: skewX(10deg);
             transform: skewX(10deg); }
@@ -226,7 +226,7 @@ section {
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: #d61e1e;
+    background-color: #ee8000;
     z-index: -1;
     -webkit-transform: skewX(10deg);
             transform: skewX(10deg); }
@@ -276,6 +276,13 @@ span {
           animation: slide-in 0.8s cubic-bezier(0.55, 0, 0.1, 1) 0s;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both; }
+
+.ready .top-bar {
+  -webkit-animation: slide-in 0.8s cubic-bezier(0.55, 0, 0.1, 1) 0s;
+          animation: slide-in 0.8s cubic-bezier(0.55, 0, 0.1, 1) 0s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
 
 @-webkit-keyframes intro {
   0% {
@@ -345,7 +352,7 @@ body.show-region .region {
     height: 1.85em;
     position:absolute;
     top:0;
-    background-color:blue;
+    background-color:#000;
     background-size:cover;
 }
 
@@ -398,4 +405,50 @@ body.show-region .region.usa {
 }
 body.show-region .region.unk {
     background-image: url();
+}
+
+/* Freeplay */
+
+.freeplay .top-bar {
+  display:none;
+}
+
+.freeplay-ticker {
+  position: fixed;
+  width:100%;
+  top:0;
+  opacity:0;
+  transform:translateY(-100%);
+  /* transition: opacity 0.8s cubic-bezier(0.55, 0, 0.1, 1), transform 0.8s cubic-bezier(0.55, 0, 0.1, 1); */
+
+  height:32px;
+  background-color:#121314;
+  background-image: url('../img/freeplay-ticker.png');
+  transition:all 0.8s cubic-bezier(0.55, 0, 0.1, 1);
+  background-repeat: repeat-x;
+
+  animation-name: ticker;
+  animation-timing-function: linear;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+.freeplay .freeplay-ticker {
+  opacity:1;
+  transform:translateY(0%);
+}
+
+@keyframes ticker {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 420px center;
+  }
+}
+
+.player span {
+  min-height:21px;
+  color: white;
 }

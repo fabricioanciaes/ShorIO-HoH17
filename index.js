@@ -7,10 +7,19 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/dashboard2.html');
 });
 
-app.get('/view', function(req, res){
-    res.sendFile(__dirname + '/view.html');
+app.get('/scoreboard', function(req, res){
+    res.sendFile(__dirname + '/scoreboard.html');
 });
 
+app.get('/casters', function (req, res) {
+    res.sendFile(__dirname + '/casters.html');
+});
+
+app.get('/idle', function (req, res) {
+    res.sendFile(__dirname + '/idle.html');
+});
+
+app.use("/img", express.static(__dirname + '/img'));
 app.use("/styles", express.static(__dirname + '/styles'));
 app.use("/scripts", express.static(__dirname + '/scripts'));
 app.use("/fonts", express.static(__dirname + '/fonts'));

@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles/scoreboard.css">
+        <script src="scripts/socket.io.min.js"></script>
+        <script src="scripts/scoreboard.js"></script>
+        <script>
+            const socket = io();
+            let fields;
+
+            function addRegion(region, target) {
+                target.className = "region " + region.toLowerCase();
+            }
+            
+            function setState(data) {
+
+                updateScoreboard(data);
+
+                setTimeout(function() {
+                    if (!fields.body.classList.contains("ready")) {
+                        fields.body.classList.add("ready");
+                    }
+
+                    if (data.show_region === true) {
+                        fields.body.classList.add("show-region");
+                    } else {
+                        fields.body.classList.remove("show-region");
+                    }
+
+                    if (data.freeplay === true) {
+                        fields.body.classList.add("freeplay");
+                    } else {
+                        fields.body.classList.remove("freeplay");
+                    }
+
+                }, 50);
+
+              
+            }
+
+            function updateScoreboard(data) {
+                updateValue(fields.player1.name, data.player[0].name);
+                updateValue(fields.player1.score, data.player[0].score);
+                updateValue(fields.player2.name, data.player[1].name);
+                updateValue(fields.player2.score, data.player[1].score);
+
+                addRegion(data.player[0].region, fields.player1.region);
+                addRegion(data.player[1].region, fields.player2.region);
+            }
+
+            
+
+            document.addEventListener('DOMContentLoaded', function () {
+                fields = {
+                    body: document.querySelector('body'),
+                    player1:    {
+                        name:   document.querySelector('.left .player1 span'),
+                        score:  document.querySelector('.left .score1'),
+                        region: document.querySelector('.left .player1 .region'),
+                    },
+                    player2:    {
+                        name:   document.querySelector('.right .player2 span'),
+                        score:  document.querySelector('.right .score2'),
+                        region: document.querySelector('.right .player2 .region'),
+                    }
+                };
+
+                socket.on('update players', function (data) {
+                    console.log("UPDATE RECIEVED");
+                    console.log(data);
+                    setState(data);
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <body class="">
+            <div class="top-bar cf">
+                <section class="left">
+                    <div class="score score1">
+                        <span>0</span>
+                    </div>
+                    <div class="player player1">
+                        <div class="region bra"></div>
+                        <span class="truncate">&nbsp;</span>
+                    </div>
+                </section>
+                <section class="right">
+                    <div class="score score2">
+                        <span>0</span>
+                    </div>
+                    <div class="player player2">
+                        <div class="region bra"></div>
+                        <span class="truncate">&nbsp;</span>
+                    </div>
+                </section>
+            </div>
+
+            <div class="freeplay-ticker">
+            </div>
+        </body>
+    </body>
+</html>
