@@ -389,22 +389,22 @@ body.show-region .player2 span {
 /* Regions */
 
 body.show-region .region.bra {
-    background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/1280px-Flag_of_Brazil.svg.png');
+    background-image: url('../img/regions/bra.jpg');
 }
 body.show-region .region.arg {
-    background-image: url();
+    background-image: url('../img/regions/arg.jpg');
 }
 body.show-region .region.ecu {
-    background-image: url();
+    background-image: url('../img/regions/ecu.jpg');
 }
 body.show-region .region.jpn {
-    background-image: url();
+    background-image: url('../img/regions/jpn.jpg');
 }
 body.show-region .region.usa {
-    background-image: url();
+    background-image: url('../img/regions/usa.jpg');
 }
 body.show-region .region.unk {
-    background-image: url();
+    background-image: url('../img/regions/unk.jpg');
 }
 
 /* Freeplay */

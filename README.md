@@ -23,3 +23,5 @@ A lista de páginas é:
     - Placar, inclua por cima do vídeo do jogo
 - [http://localhost:4000/casters](http://localhost:4000/casters])
     - Comentaristas, bote por cima da webcam em tela cheia.
+
+> Lembre-se, todas as views são 1280x720 o tamanho do canvas.
